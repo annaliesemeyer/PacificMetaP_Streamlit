@@ -251,6 +251,8 @@ st.plotly_chart(fig,use_container_width=False)
 
 ##############
 
+markertable = pd.read_csv('proteinmarkertable.csv')
+st.table(markertable)
 
 markersinfo = '''
 ## Protein Markers
