@@ -5,7 +5,7 @@ statsmodels
 seaborn
 IPython.utils
 adjustText
-sklearn
+scikit-learn
 plotly
 plotly.express
 plotly.io
