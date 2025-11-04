@@ -372,12 +372,30 @@ fig.update_layout(
 fig.update_layout(
     font_family="Arial", font_size = 14, font_color = 'black')
 
+fig.update_coloraxes(showscale=False)
 fig.update_layout(
     paper_bgcolor='indigo',
-    margin=dict(pad=0, r=0, t=5, b=5, l=5)
+    margin=dict(pad=0, r=2, t=2, b=2, l=2)
 )
 
 st.plotly_chart(fig,use_container_width=False)
+
+colorbar_trace=go.Scatter(x=[None],
+             y=[None],
+             mode='markers',
+             marker=dict(
+                 colorscale='GnBu', 
+                 showscale=True,
+                 cmin=min(data2.summed),
+                 cmax=max(data2.summed),
+                 colorbar=dict(thickness=10), 
+             ),
+             hoverinfo='none'
+            )
+
+layout = dict(xaxis=dict(visible=False), yaxis=dict(visible=False))
+fig = go.Figure([colorbar_trace], layout)
+iplot(fig)
 
 ##########################################
 
