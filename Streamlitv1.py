@@ -2,7 +2,6 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import gsw
 import math
 import statsmodels 
 import matplotlib.cm as cm #colormap
@@ -10,10 +9,8 @@ from matplotlib.lines import Line2D
 import matplotlib.colors as colors
 import seaborn as sns
 import seaborn.objects as so
-import csv
 from matplotlib.colors import LinearSegmentedColormap, ListedColormap
 import matplotlib.ticker as tkr
-from IPython.utils import io
 from adjustText import adjust_text
 import matplotlib.patches as mpl_patches
 from matplotlib import gridspec
@@ -23,11 +20,7 @@ from sklearn import manifold
 from sklearn.decomposition import PCA
 from sklearn.metrics import euclidean_distances 
 from sklearn import preprocessing
-import heapq
-import plotly.io as pio
-import kaleido
 import umap
-import ipywidgets as widgets
 import streamlit as st
 
 st.set_page_config(layout='wide')
