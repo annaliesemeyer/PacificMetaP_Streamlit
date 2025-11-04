@@ -154,6 +154,10 @@ if sizefract =='3 - 51 µm':
      'GP17-OCE_3_38']
     stn_dict3 = dict(zip(stn_keys, stn_vals))
 
+
+st.markdown('# Pacific Metaproteomics Surface Transect')
+st.markdown('Created by Annaliese Meyer')
+st.markdown('Contact: acsmeyer@mit.edu')
 ################
 optiontax = st.selectbox('Taxonomic Resolution:',['Domain', 'Supergroup', 'Phylum', 'Class','Order','Family','Genus','Species'],index = 0)
 
@@ -388,7 +392,7 @@ cmap = ListedColormap(['#01ff07','#fe01b1','#ff9408','#a9561e','#490648','#aa23f
 
 ax = plt.subplot()
 ax.patch.set_alpha(0.0)
-ax.set_title(str(protselect), color = "#white", size = 9, loc = 'left')
+ax.set_title(str(protselect), color = "white", size = 9, loc = 'left')
 ax = pd.plotting.parallel_coordinates(toplot, cols = stn_ID, class_column = optiontax, colormap = cmap, axvlines = False, linewidth = 0.5)#color=toplot.colours)
 ax.set_ylim([0,maxval])
 ax.spines['top'].set_color("palegreen")
