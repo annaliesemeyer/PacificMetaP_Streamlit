@@ -426,6 +426,20 @@ st.pyplot(fig, width = 'stretch')
 #st.image('lines.png', width = 'content')
 
 
+
+##########################
+
+
+fig = px.line(toplot, x=stn_ID, y="sum", color=optiontax, colormap =cmap)
+st.plotly_chart(fig,use_container_width=True)
+
+
+
+
+
+
+
+
 ##########################################
 
 #compare proteins
