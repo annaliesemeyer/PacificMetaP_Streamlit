@@ -51,8 +51,8 @@ mpl.rcParams['ytick.direction'] = 'in'
 mpl.rcParams["legend.frameon"] = False
 mpl.rcParams["axes.axisbelow"] = True
 
-taxa_filled_02 = pd.read_csv('GP15-17-OCE-02-3um.csv')
-taxa_filled_3 = pd.read_csv('GP15-17-OCE-3-51um.csv')
+taxa_filled_02 = pd.read_csv('GP15-17-OCE-02-3um.csv', encoding = 'latin-1',low_memory=False)
+taxa_filled_3 = pd.read_csv('GP15-17-OCE-3-51um.csv',encoding = 'latin-1',low_memory=False)
 
 sizefract = st.sidebar.radio('Size Fraction:',['0.2 - 3 µm', '3 - 51 µm'],index = 0)
 
