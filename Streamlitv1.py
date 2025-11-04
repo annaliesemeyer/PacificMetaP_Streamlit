@@ -421,7 +421,7 @@ fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize 
 #plt.text(0.1,0.1,str(protselect),size = 15, weight ='bold')
 ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 
-st.pyplot(fig, width = 'stretch')
+st.write(fig, width = 'stretch')
 #fig.savefig('lines.png', format="png", dpi=1000, transparent=True)
 #st.image('lines.png', width = 'content')
 
