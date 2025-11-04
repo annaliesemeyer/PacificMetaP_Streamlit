@@ -321,13 +321,13 @@ Acid Phosphatase	| Acid phosphatase
 '''
 
 
-if st.sidebar.checkbox('Protein Markers Reference'):
-    st.markdown(markersinfo)
-
 ####
 
 protselect = st.selectbox('Select a protein or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
 
+if st.checkbox('Protein Markers Reference'):
+    st.markdown(markersinfo)
+    
 data = taxa_protname_summed#.groupby(taxa_protname_summed['protname'])
 
 #data = data.get_group('fecA')
@@ -421,6 +421,76 @@ st.pyplot(fig, width = 'stretch')
 
 
 ##########################################
+
+#compare proteins
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown('Target Protein 1')
+    target = st.selectbox('Select a protein or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
+
+with col2:
+    st.markdown('Target Protein 2')
+    target2 = st.selectbox('Select a protein or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
+
+
+params = {'mathtext.default': 'regular' }          
+plt.rcParams.update(params)
+
+#target
+data = taxa_protname_summed#.groupby(taxa_protname_summed['protname'])
+
+data1 = data[data['protname'].str.contains(target)]
+
+data2 = data1.groupby("stn").agg(
+    lat = pd.NamedAgg(column="lat", aggfunc="min"),
+    lon = pd.NamedAgg(column="lon", aggfunc="min"),
+    summed = pd.NamedAgg(column="sum", aggfunc="sum"),
+    station = pd.NamedAgg(column="stn", aggfunc="min"),
+    param_group = pd.NamedAgg(column="protname", aggfunc="sum")
+)
+
+datagroup1 = data2.groupby('station')
+
+
+
+#target2
+dataa = taxa_kegg_summed#.groupby(taxa_protname_summed['protname'])
+
+datab = dataa[dataa['protname'].str.contains(target2)]
+
+datac = datab.groupby("stn").agg(
+    lat = pd.NamedAgg(column="lat", aggfunc="min"),
+    lon = pd.NamedAgg(column="lon", aggfunc="min"),
+    summed = pd.NamedAgg(column="sum", aggfunc="sum"),
+    station = pd.NamedAgg(column="stn", aggfunc="min"),
+    param_group = pd.NamedAgg(column="protname", aggfunc="sum")
+)
+
+datagroupa = datac.groupby('station')
+
+
+
+fig = plt.figure(figsize = [4,4])
+
+
+ax = plt.subplot()
+for n, k in enumerate(datagroup1.groups.keys()):
+    datagroup2 = datagroup1.get_group(k)
+    datagroupb = datagroupa.get_group(k)
+    bgcplot = bgc[bgc['station']==k]
+
+
+    c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'gist_yarg', edgecolor = 'k')
+
+
+#cbar = plt.colorbar(c)
+ax.grid()
+ax.ticklabel_format(scilimits=(0,0), axis = 'both')
+#ax.set_xlim(-0.5,100)
+#ax.loglog()
+ax.set_ylabel('$F_{protein 2}$')
+ax.set_xlabel('$F_{protein 1}$')
 
 
 
