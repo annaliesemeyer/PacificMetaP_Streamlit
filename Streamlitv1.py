@@ -476,35 +476,35 @@ datac = datab.groupby("stn").agg(
 datagroupa = datac.groupby('station')
 
 
-
-fig = plt.figure()
-
-fig.patch.set_alpha(0.0)
-ax = plt.subplot()
-ax.patch.set_alpha(0.0)
-
-for n, k in enumerate(datagroup1.groups.keys()):
-    datagroup2 = datagroup1.get_group(k)
-    datagroupb = datagroupa.get_group(k)
-
-
-    c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'viridis', edgecolor = 'white')
-
-
-cbar = plt.colorbar(c)
-cbar.ax.set_ylabel('Latitude (˚N)', color = 'white')
-ax.grid()
-ax.ticklabel_format(scilimits=(0,0), axis = 'both')
-#ax.set_xlim(-0.5,100)
-#ax.loglog()
-ax.set_ylabel('$F_{protein 2}$')
-ax.set_xlabel('$F_{protein 1}$')
-ax.spines['top'].set_color("palegreen")
-ax.spines['bottom'].set_color("palegreen")
-ax.spines['left'].set_color("palegreen")
-ax.spines['right'].set_color("palegreen")
-ax.tick_params(axis='y', colors="palegreen", labelsize = 10)
-ax.tick_params(axis='x', colors="palegreen", labelsize =10)
-st.pyplot(fig)
+with st.container():
+    fig = plt.figure()
+    
+    fig.patch.set_alpha(0.0)
+    ax = plt.subplot()
+    ax.patch.set_alpha(0.0)
+    
+    for n, k in enumerate(datagroup1.groups.keys()):
+        datagroup2 = datagroup1.get_group(k)
+        datagroupb = datagroupa.get_group(k)
+    
+    
+        c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'viridis', edgecolor = 'white')
+    
+    
+    cbar = plt.colorbar(c)
+    cbar.ax.set_ylabel('Latitude (˚N)', color = 'white')
+    ax.grid()
+    ax.ticklabel_format(scilimits=(0,0), axis = 'both')
+    #ax.set_xlim(-0.5,100)
+    #ax.loglog()
+    ax.set_ylabel('$F_{protein 2}$')
+    ax.set_xlabel('$F_{protein 1}$')
+    ax.spines['top'].set_color("palegreen")
+    ax.spines['bottom'].set_color("palegreen")
+    ax.spines['left'].set_color("palegreen")
+    ax.spines['right'].set_color("palegreen")
+    ax.tick_params(axis='y', colors="palegreen", labelsize = 10)
+    ax.tick_params(axis='x', colors="palegreen", labelsize =10)
+    st.pyplot(fig)
 
 
