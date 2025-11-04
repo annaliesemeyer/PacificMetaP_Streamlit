@@ -1,0 +1,18 @@
+matplotlib
+numpy as np
+pandas as pd
+gsw
+math
+statsmodels 
+seaborn
+csv
+IPython.utils
+adjustText
+sklearn
+Poorly
+plotly.express
+heapq
+plotly.io
+kaleido
+umap
+ipywidgets
