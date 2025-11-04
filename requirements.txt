@@ -1,7 +1,6 @@
 matplotlib
 numpy
 pandas
-math
 statsmodels 
 seaborn
 csv
@@ -10,8 +9,7 @@ adjustText
 sklearn
 plotly
 plotly.express
-heapq
 plotly.io
 kaleido
 umap
-ipywidgets
+
