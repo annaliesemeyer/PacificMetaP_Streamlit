@@ -471,7 +471,7 @@ datagroupa = datac.groupby('station')
 
 
 
-fig = plt.figure(figsize = [4,4])
+fig = plt.figure()
 
 
 ax = plt.subplot()
@@ -492,5 +492,5 @@ ax.ticklabel_format(scilimits=(0,0), axis = 'both')
 ax.set_ylabel('$F_{protein 2}$')
 ax.set_xlabel('$F_{protein 1}$')
 
-
+st.pyplot(fig)
 
