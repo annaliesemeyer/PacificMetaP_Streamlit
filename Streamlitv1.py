@@ -204,9 +204,9 @@ st.plotly_chart(fig,use_container_width=True)
 #############
 
 taxselect = st.selectbox('Taxon:',list(data.clade.unique()))
-col1, col2 = st.columns(2)
-con1 = col1.container(border=True)
-
+#col1, col2 = st.columns(2)
+#con1 = col1.container(border=True)
+con1 = st.container()
 with con1:
     data1 = data[data['clade'].str.contains(taxselect)]
     
@@ -220,7 +220,7 @@ with con1:
     
     
     fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
-                         hover_name="stn", size="summed",size_max = 30,color_continuous_scale="YlOrRd",opacity = 0.7)
+                         hover_name="stn", size="summed",size_max = 30,color_continuous_scale="viridis",opacity = 0.7)
     
     fig.update_layout(height=1000, width = 700)
     fig.update_layout(coloraxis_colorbar_title_text = '% per station')
@@ -340,7 +340,7 @@ data2 = data1.groupby("stn").agg(
 
 
 fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
-                     hover_name="stn", size="summed",size_max = 30,color_continuous_scale="YlOrRd",opacity = 0.7)
+                     hover_name="stn", size="summed",size_max = 30,color_continuous_scale="viridis",opacity = 0.7)
 
 #fig = px.scatter_mapbox(data, lat = 'lat', lon = 'lon', color = "sum",
 #                     hover_name="stn", size="sum",size_max = 30,color_continuous_scale="YlOrRd", opacity = 1)
