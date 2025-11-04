@@ -380,22 +380,6 @@ fig.update_layout(
 
 st.plotly_chart(fig,use_container_width=False)
 
-colorbar_trace=go.Scatter(x=[None],
-             y=[None],
-             mode='markers',
-             marker=dict(
-                 colorscale='GnBu', 
-                 showscale=True,
-                 cmin=min(data2.summed),
-                 cmax=max(data2.summed),
-                 colorbar=dict(thickness=10), 
-             ),
-             hoverinfo='none'
-            )
-
-layout = dict(xaxis=dict(visible=False), yaxis=dict(visible=False))
-fig = go.Figure([colorbar_trace], layout)
-iplot(fig)
 
 ##########################################
 
@@ -412,11 +396,12 @@ taxa_filled_small[stn_ID] = taxa_filled[stn_ID]
 toplot = taxa_filled_small[taxa_filled_small['protname'].str.contains(protselect)] #ko:K16087, ko:K16091, ko:K09815,ko:K02077,ko:K11959
 maxval = toplot[stn_ID].max().max()
 xlabels = stn_keys
-fig = plt.figure(figsize = (8, 3))
+fig = plt.figure()#figsize = (8, 3)
 fig.patch.set_alpha(0.0)
 cmap = ListedColormap(['#01ff07','#fe01b1','#ff9408','#a9561e','#490648','#aa23ff','#13bbaf','#247afd','#ec2d01','#3f9b0b', 'gray','tan','palegreen'])
 
 ax = plt.subplot()
+ax.set_box_aspect(1/3)
 ax.patch.set_alpha(0.0)
 ax.set_title(str(protselect), color = "white", size = 9, loc = 'left')
 ax = pd.plotting.parallel_coordinates(toplot, cols = stn_ID, class_column = optiontax, colormap = cmap, axvlines = False, linewidth = 0.5)#color=toplot.colours)
