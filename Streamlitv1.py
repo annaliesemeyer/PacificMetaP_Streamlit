@@ -204,8 +204,10 @@ st.plotly_chart(fig,use_container_width=True)
 #############
 
 taxselect = st.selectbox('Taxon:',list(data.clade.unique()))
+col1, col2 = st.columns(2)
+con1 = col1.container(border=True)
 
-with st.container(border = True):
+with con1:
     data1 = data[data['clade'].str.contains(taxselect)]
     
     data2 = data1.groupby("stn").agg(
@@ -237,8 +239,7 @@ with st.container(border = True):
             style="satellite"
         ))
     
-    fig.update_layout(
-        font_family="Arial", font_size = 14, font_color = 'black'
+    fig.update_layout(font_size = 14, font_color = 'black'
         
     )
     
@@ -399,7 +400,7 @@ ax.spines['top'].set_color("palegreen")
 ax.spines['bottom'].set_color("palegreen")
 ax.spines['left'].set_color("palegreen")
 ax.spines['right'].set_color("palegreen")
-ax.tick_params(axis='x', colors="#e8e8e8", labelsize = 7, size = 0)
+ax.tick_params(axis='x', colors="#e8e8e8", labelsize = 6.5, size = 0)
 ax.tick_params(axis='y', colors="palegreen", labelsize = 7, size = 0)
 ax.grid(False)
 ax.vlines(range(0,len(xlabels)),ymin = 0, ymax = maxval,color = "#e8e8e8", zorder = 0, alpha = 0.5, linewidth = 0.3)
