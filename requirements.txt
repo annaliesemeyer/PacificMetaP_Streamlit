@@ -8,7 +8,5 @@ adjustText
 scikit-learn
 plotly
 plotly.express
-plotly.io
-kaleido
 umap
 
