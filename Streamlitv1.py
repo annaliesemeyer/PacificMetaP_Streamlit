@@ -447,7 +447,7 @@ data2 = data1.groupby("stn").agg(
     lon = pd.NamedAgg(column="lon", aggfunc="min"),
     summed = pd.NamedAgg(column="sum", aggfunc="sum"),
     station = pd.NamedAgg(column="stn", aggfunc="min"),
-    param_group = pd.NamedAgg(column="protname", aggfunc="sum")
+    #param_group = pd.NamedAgg(column="protname", aggfunc="sum")
 )
 
 datagroup1 = data2.groupby('station')
@@ -464,7 +464,7 @@ datac = datab.groupby("stn").agg(
     lon = pd.NamedAgg(column="lon", aggfunc="min"),
     summed = pd.NamedAgg(column="sum", aggfunc="sum"),
     station = pd.NamedAgg(column="stn", aggfunc="min"),
-    param_group = pd.NamedAgg(column="protname", aggfunc="sum")
+    #param_group = pd.NamedAgg(column="protname", aggfunc="sum")
 )
 
 datagroupa = datac.groupby('station')
