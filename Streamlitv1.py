@@ -220,7 +220,7 @@ with con1:
     
     
     fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
-                         hover_name="stn", size="summed",size_max = 30,color_continuous_scale="viridis",opacity = 0.9)
+                         hover_name="stn", size="summed",size_max = 30,color_continuous_scale="GnBu",opacity = 0.9)
     
     fig.update_layout(height=1000, width = 700)
     fig.update_layout(coloraxis_colorbar_title_text = '% per station')
@@ -340,7 +340,7 @@ data2 = data1.groupby("stn").agg(
 
 
 fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
-                     hover_name="stn", size="summed",size_max = 30,color_continuous_scale="viridis",opacity = 0.9)
+                     hover_name="stn", size="summed",size_max = 30,color_continuous_scale="GnBu",opacity = 0.9)
 
 #fig = px.scatter_mapbox(data, lat = 'lat', lon = 'lon', color = "sum",
 #                     hover_name="stn", size="sum",size_max = 30,color_continuous_scale="YlOrRd", opacity = 1)
@@ -369,8 +369,8 @@ fig.update_layout(
     font_family="Arial", font_size = 14, font_color = 'black')
 
 fig.update_layout(
-    paper_bgcolor='white',
-    margin=dict(pad=0, r=5, t=5, b=5, l=5)
+    paper_bgcolor='indigo',
+    margin=dict(pad=0, r=-10, t=5, b=5, l=5)
 )
 
 st.plotly_chart(fig,use_container_width=False)
