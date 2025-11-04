@@ -478,7 +478,7 @@ ax = plt.subplot()
 for n, k in enumerate(datagroup1.groups.keys()):
     datagroup2 = datagroup1.get_group(k)
     datagroupb = datagroupa.get_group(k)
-    bgcplot = bgc[bgc['station']==k]
+
 
 
     c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'gist_yarg', edgecolor = 'k')
