@@ -1,7 +1,6 @@
 matplotlib
 numpy
 pandas
-gsw
 math
 statsmodels 
 seaborn
@@ -9,7 +8,7 @@ csv
 IPython.utils
 adjustText
 sklearn
-Poorly
+plotly
 plotly.express
 heapq
 plotly.io
