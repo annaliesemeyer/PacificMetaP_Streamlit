@@ -205,44 +205,44 @@ st.plotly_chart(fig,use_container_width=True)
 
 taxselect = st.selectbox('Taxon:',list(data.clade.unique()))
 
-
-data1 = data[data['clade'].str.contains(taxselect)]
-
-data2 = data1.groupby("stn").agg(
-    lat = pd.NamedAgg(column="lat", aggfunc="min"),
-    lon = pd.NamedAgg(column="lon", aggfunc="min"),
-    summed = pd.NamedAgg(column="sum", aggfunc="sum"),
-    stn = pd.NamedAgg(column="stn", aggfunc="min"),
-    param_group = pd.NamedAgg(column="clade", aggfunc="sum")
-)
-
-
-fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
-                     hover_name="stn", size="summed",size_max = 30,color_continuous_scale="YlOrRd",opacity = 0.7)
-
-fig.update_layout(height=1000, width = 700)
-fig.update_layout(coloraxis_colorbar_title_text = '% per station')
-fig.update_layout(
-    autosize=False,
-    hovermode='closest',
-    map=dict(
-        bearing=0,
-        pitch=0,
-        zoom=1,
-        bounds=dict(
-            west=-170,
-            south=-70,
-            east=-49,
-            north=63),
-        style="satellite"
-    ))
-
-fig.update_layout(
-    font_family="Arial", font_size = 14, font_color = 'black'
+with st.container(border = True):
+    data1 = data[data['clade'].str.contains(taxselect)]
     
-)
-
-st.plotly_chart(fig,use_container_width=False)
+    data2 = data1.groupby("stn").agg(
+        lat = pd.NamedAgg(column="lat", aggfunc="min"),
+        lon = pd.NamedAgg(column="lon", aggfunc="min"),
+        summed = pd.NamedAgg(column="sum", aggfunc="sum"),
+        stn = pd.NamedAgg(column="stn", aggfunc="min"),
+        param_group = pd.NamedAgg(column="clade", aggfunc="sum")
+    )
+    
+    
+    fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
+                         hover_name="stn", size="summed",size_max = 30,color_continuous_scale="YlOrRd",opacity = 0.7)
+    
+    fig.update_layout(height=1000, width = 700)
+    fig.update_layout(coloraxis_colorbar_title_text = '% per station')
+    fig.update_layout(
+        autosize=False,
+        hovermode='closest',
+        map=dict(
+            bearing=0,
+            pitch=0,
+            zoom=1,
+            bounds=dict(
+                west=-170,
+                south=-70,
+                east=-49,
+                north=63),
+            style="satellite"
+        ))
+    
+    fig.update_layout(
+        font_family="Arial", font_size = 14, font_color = 'black'
+        
+    )
+    
+    st.plotly_chart(fig,use_container_width=False)
 
 ##############
 
