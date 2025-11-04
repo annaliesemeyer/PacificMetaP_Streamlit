@@ -1,8 +1,9 @@
 [theme]
 backgroundColor = "black"
-secondaryBackgroundColor = "forestGreen"
-textColor="darkGoldenrod"
+secondaryBackgroundColor = "indigo"
+textColor="lightCyan"
 linkColor="darkOrchid"
+borderColor = "lightSeaGreen"
 font = "sans-serif"
 headingFont = "sans-serif"
 codeFont = "monospace"
