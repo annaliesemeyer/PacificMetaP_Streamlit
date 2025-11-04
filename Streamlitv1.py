@@ -487,7 +487,8 @@ ax.spines['top'].set_color("orange")
 ax.spines['bottom'].set_color("orange")
 ax.spines['left'].set_color("orange")
 ax.spines['right'].set_color("orange")
-
+ax.tick_params(axis='y', colors="orange")
+ax.tick_params(axis='x', colors="orange")
 st.pyplot(fig)
 
 
