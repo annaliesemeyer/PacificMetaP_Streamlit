@@ -418,11 +418,11 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.markdown('Target Protein 1')
-    target = st.selectbox('Select protein 1 from dropdown or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
+    target = st.selectbox('Select protein 1 from dropdown or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 3)
 
 with col2:
     st.markdown('Target Protein 2')
-    target2 = st.selectbox('Select a protein 2 from dropdown or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
+    target2 = st.selectbox('Select a protein 2 from dropdown or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 4)
 
 
 params = {'mathtext.default': 'regular' }          
@@ -476,7 +476,7 @@ for n, k in enumerate(datagroup1.groups.keys()):
     c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'viridis', edgecolor = 'white')
 
 
-#cbar = plt.colorbar(c)
+cbar = plt.colorbar(c)
 ax.grid()
 ax.ticklabel_format(scilimits=(0,0), axis = 'both')
 #ax.set_xlim(-0.5,100)
@@ -487,8 +487,8 @@ ax.spines['top'].set_color("orange")
 ax.spines['bottom'].set_color("orange")
 ax.spines['left'].set_color("orange")
 ax.spines['right'].set_color("orange")
-ax.tick_params(axis='y', colors="orange")
-ax.tick_params(axis='x', colors="orange")
+ax.tick_params(axis='y', colors="orange", labelsize = 10)
+ax.tick_params(axis='x', colors="orange", labelsize =10)
 st.pyplot(fig)
 
 
