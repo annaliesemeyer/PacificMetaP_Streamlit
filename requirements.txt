@@ -10,3 +10,4 @@ plotly
 plotly.express
 umap
 streamlit
+IPython.utils

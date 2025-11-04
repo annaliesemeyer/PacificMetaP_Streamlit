@@ -22,6 +22,7 @@ from sklearn.metrics import euclidean_distances
 from sklearn import preprocessing
 import umap
 import streamlit as st
+from IPython.utils import io
 
 st.set_page_config(layout='wide')
 
