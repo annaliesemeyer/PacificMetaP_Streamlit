@@ -1,0 +1,13 @@
+[theme]
+backgroundColor = "black"
+secondaryBackgroundColor = "forestGreen"
+textColor="darkGoldenrod"
+linkColor="darkOrchid"
+font = "sans-serif"
+headingFont = "sans-serif"
+codeFont = "monospace"
+baseFontSize = 18
+[theme.sidebar]
+font = "sans-serif"
+headingFont = "sans-serif"
+codeFont = "monospace"
