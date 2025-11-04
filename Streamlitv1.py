@@ -27,19 +27,10 @@ from IPython.utils import io
 st.set_page_config(layout='wide')
 
 
-mpl.rcParams['font.sans-serif'] = "Arial"
-mpl.rcParams['font.weight'] = "normal"
-#mpl.rc('font',**{'family':'sans-serif', 'sans-serif':['Helvetica']})
-#rc('font',**{'family':'serif','serif':['Courier New'], 'weight':'bold'})
-#rc('text', usetex=False)
 plt.rcParams['font.size'] = 7
 #plt.rcParams["font.weight"] = 'bold'
 #plt.rcParams["axes.labelweight"] = 'bold'
 mpl.rcParams['axes.linewidth'] = 1
-plt.rcParams.update({
-    "text.usetex": False,
-    "font.family": "Arial"
-})
 
 # set tick width
 mpl.rcParams['xtick.major.size'] = 4
@@ -473,15 +464,16 @@ datagroupa = datac.groupby('station')
 
 fig = plt.figure()
 
-
+fig.patch.set_alpha(0.0)
 ax = plt.subplot()
+ax.patch.set_alpha(0.0)
+
 for n, k in enumerate(datagroup1.groups.keys()):
     datagroup2 = datagroup1.get_group(k)
     datagroupb = datagroupa.get_group(k)
 
 
-
-    c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'gist_yarg', edgecolor = 'k')
+    c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'viridis', edgecolor = 'white')
 
 
 #cbar = plt.colorbar(c)
@@ -491,6 +483,11 @@ ax.ticklabel_format(scilimits=(0,0), axis = 'both')
 #ax.loglog()
 ax.set_ylabel('$F_{protein 2}$')
 ax.set_xlabel('$F_{protein 1}$')
+ax.spines['top'].set_color("orange")
+ax.spines['bottom'].set_color("orange")
+ax.spines['left'].set_color("orange")
+ax.spines['right'].set_color("orange")
 
 st.pyplot(fig)
+
 
