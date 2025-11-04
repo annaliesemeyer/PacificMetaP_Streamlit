@@ -242,7 +242,10 @@ with con1:
     fig.update_layout(font_size = 14, font_color = 'black'
         
     )
-    
+    fig.update_xaxes(linewidth=1, linecolor='black', mirror=True, ticks='inside', 
+    showline=True)
+    fig.update_yaxes(linewidth=1, linecolor='black', mirror=True, ticks='inside', 
+    showline=True)
     st.plotly_chart(fig,use_container_width=False)
 
 ##############
@@ -370,7 +373,7 @@ fig.update_layout(
 
 fig.update_layout(
     paper_bgcolor='indigo',
-    margin=dict(pad=0, r=-10, t=5, b=5, l=5)
+    margin=dict(pad=0, r=0, t=5, b=5, l=5)
 )
 
 st.plotly_chart(fig,use_container_width=False)
