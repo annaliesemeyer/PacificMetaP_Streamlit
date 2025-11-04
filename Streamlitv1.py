@@ -251,8 +251,10 @@ st.plotly_chart(fig,use_container_width=False)
 
 ##############
 
-markertable = pd.read_csv('proteinmarkertable.csv')
-st.table(markertable)
+#markertable = pd.read_csv('proteinmarkertable.csv')
+#st.table(markertable)
+
+
 
 markersinfo = '''
 ## Protein Markers
@@ -317,7 +319,10 @@ SqdB	| Sulfolipid synthesis protein
 PTC1	| Protein phosphatase
 Acid Phosphatase	| Acid phosphatase
 '''
-st.markdown(markersinfo)
+
+
+if st.sidebar.checkbox('Protein Markers Reference'):
+    st.markdown(markersinfo)
 
 ####
 
