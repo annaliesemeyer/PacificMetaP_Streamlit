@@ -388,7 +388,7 @@ cmap = ListedColormap(['#01ff07','#fe01b1','#ff9408','#a9561e','#490648','#aa23f
 
 ax = plt.subplot()
 ax.patch.set_alpha(0.0)
-ax.set_title(str(protselect), color = "#e8e8e8", size = 9, loc = 'left')
+ax.set_title(str(protselect), color = "#white", size = 9, loc = 'left')
 ax = pd.plotting.parallel_coordinates(toplot, cols = stn_ID, class_column = optiontax, colormap = cmap, axvlines = False, linewidth = 0.5)#color=toplot.colours)
 ax.set_ylim([0,maxval])
 ax.spines['top'].set_color("palegreen")
@@ -476,8 +476,8 @@ for n, k in enumerate(datagroup1.groups.keys()):
     c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'viridis', edgecolor = 'white')
 
 
-cbar = plt.colorbar(c, label = 'Latitude (˚N)')
-
+cbar = plt.colorbar(c)
+cbar.ax.set_ylabel('Latitude (˚N)', color = 'white')
 ax.grid()
 ax.ticklabel_format(scilimits=(0,0), axis = 'both')
 #ax.set_xlim(-0.5,100)
