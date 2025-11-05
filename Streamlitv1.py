@@ -398,12 +398,12 @@ toplot = taxa_filled_small[taxa_filled_small['protname'].str.contains(protselect
 maxval = toplot[stn_ID].max().max()
 xlabels = stn_keys
 fig = plt.figure(figsize = (8, 3))
-fig.patch.set_alpha(0.0)
+fig.patch.set_facecolor('black')
 cmap = ListedColormap(['#01ff07','#fe01b1','#ff9408','#a9561e','#490648','#aa23ff','#13bbaf','#247afd','#ec2d01','#3f9b0b', 'gray','tan','palegreen'])
 
 ax = plt.subplot()
 ax.set_box_aspect(1/3)
-ax.patch.set_alpha(0.0)
+ax.patch.set_facecolor('black')
 ax.set_title(str(protselect), color = "white", size = 9, loc = 'left')
 ax = pd.plotting.parallel_coordinates(toplot, cols = stn_ID, class_column = optiontax, colormap = cmap, axvlines = False, linewidth = 0.5)#color=toplot.colours)
 ax.set_ylim([0,maxval])
@@ -489,35 +489,38 @@ datac = datab.groupby("stn").agg(
 datagroupa = datac.groupby('station')
 
 
-with st.container():
-    fig = plt.figure()
-    
-    fig.patch.set_alpha(0.0)
-    ax = plt.subplot()
-    ax.patch.set_alpha(0.0)
-    
-    for n, k in enumerate(datagroup1.groups.keys()):
-        datagroup2 = datagroup1.get_group(k)
-        datagroupb = datagroupa.get_group(k)
-    
-    
-        c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'viridis', edgecolor = 'white')
-    
-    
-    cbar = plt.colorbar(c)
-    cbar.ax.set_ylabel('Latitude (˚N)', color = 'white')
-    ax.grid()
-    ax.ticklabel_format(scilimits=(0,0), axis = 'both')
-    #ax.set_xlim(-0.5,100)
-    #ax.loglog()
-    ax.set_ylabel('$F_{protein 2}$')
-    ax.set_xlabel('$F_{protein 1}$')
-    ax.spines['top'].set_color("palegreen")
-    ax.spines['bottom'].set_color("palegreen")
-    ax.spines['left'].set_color("palegreen")
-    ax.spines['right'].set_color("palegreen")
-    ax.tick_params(axis='y', colors="palegreen", labelsize = 10)
-    ax.tick_params(axis='x', colors="palegreen", labelsize =10)
-    st.pyplot(fig)
+
+fig = plt.figure()
+
+fig.patch.facecolor('black')
+ax = plt.subplot()
+#ax.patch.set_alpha(0.0)
+ax.patch.set_facecolor('black')
+
+for n, k in enumerate(datagroup1.groups.keys()):
+    datagroup2 = datagroup1.get_group(k)
+    datagroupb = datagroupa.get_group(k)
+
+
+    c = ax.scatter(datagroupb['summed'],datagroup2['summed'],c = datagroup2.lat, clim = (-67,60), s = 60, alpha = 1, cmap = 'viridis', edgecolor = 'white')
+
+
+cbar = plt.colorbar(c)
+cbar.ax.set_ylabel('Latitude (˚N)', color = 'white')
+ax.grid()
+ax.ticklabel_format(scilimits=(0,0), axis = 'both')
+#ax.set_xlim(-0.5,100)
+#ax.loglog()
+ax.set_ylabel('$F_{protein 2}$')
+ax.set_xlabel('$F_{protein 1}$')
+ax.spines['top'].set_color("palegreen")
+ax.spines['bottom'].set_color("palegreen")
+ax.spines['left'].set_color("palegreen")
+ax.spines['right'].set_color("palegreen")
+ax.tick_params(axis='y', colors="palegreen", labelsize = 10)
+ax.tick_params(axis='x', colors="palegreen", labelsize =10)
+
+fig.savefig('comps.pdf', format="pdf", bbox_inches = "tight")
+st.pdf('comps.pdf', height = 'stretch')
 
 
