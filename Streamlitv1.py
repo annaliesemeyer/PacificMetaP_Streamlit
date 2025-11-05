@@ -430,7 +430,7 @@ ax.vlines(range(0,len(xlabels)),ymin = 0, ymax = maxval,color = "#e8e8e8", zorde
 with io.capture_output() as captured:
     ax.set_xticklabels(xlabels)
 ax.get_legend().remove()
-fig.legend(bbox_to_anchor=(1.05, 1), loc='upper left',frameon = True, framealpha = 1, fontsize = 4, facecolor='k', labelcolor ='#e8e8e8', draggable = True, edgecolor = 'palegreen')
+fig.legend(bbox_to_anchor=(1.01, 1), loc='upper left',frameon = True, framealpha = 1, fontsize = 4, facecolor='k', labelcolor ='#e8e8e8', draggable = True, edgecolor = 'palegreen')
 #fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize = 4, facecolor='k', labelcolor ='#e8e8e8', draggable = True, edgecolor = 'palegreen')
 #plt.text(0.1,0.1,str(protselect),size = 15, weight ='bold')
 ax.ticklabel_format(scilimits=(0,0), axis = 'y')
