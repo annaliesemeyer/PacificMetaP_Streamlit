@@ -429,6 +429,7 @@ ax.grid(False)
 ax.vlines(range(0,len(xlabels)),ymin = 0, ymax = maxval,color = "#e8e8e8", zorder = 0, alpha = 0.5, linewidth = 0.3)
 with io.capture_output() as captured:
     ax.set_xticklabels(xlabels)
+ax.set_xlabel('Station', color = 'white', size = 6)
 ax.get_legend().remove()
 fig.legend(bbox_to_anchor=(0.91, 0.8), loc='upper left',frameon = False, framealpha = 1, fontsize = 4.5, facecolor='k', labelcolor ='#e8e8e8', draggable = True, edgecolor = 'palegreen')
 #fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize = 4, facecolor='k', labelcolor ='#e8e8e8', draggable = True, edgecolor = 'palegreen')
