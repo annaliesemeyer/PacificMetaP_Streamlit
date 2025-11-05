@@ -163,7 +163,7 @@ st.markdown('# Pacific Metaproteomics Surface Transect')
 st.markdown('Created by Annaliese Meyer')
 st.markdown('Contact: acsmeyer@mit.edu')
 st.markdown('These data are to be used for educational purposes only.')
-st.markdown('## Explore the dataset!")
+st.markdown('## Explore the dataset!')
 st.markdown('### Community Composition')
 ################
 optiontax = st.selectbox('Taxonomic Resolution:',['Domain', 'Supergroup', 'Phylum', 'Class','Order','Family','Genus','Species'],index = 0)
