@@ -1,7 +1,7 @@
 [theme]
 backgroundColor = "black"
 secondaryBackgroundColor = "indigo"
-textColor="paleTurquoise"
+textColor="white"
 linkColor="darkOrchid"
 borderColor = "lightSeaGreen"
 font = "sans-serif"
