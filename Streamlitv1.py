@@ -519,7 +519,7 @@ for n, k in enumerate(datagroup1.groups.keys()):
 
 
 cbar = plt.colorbar(c)
-cbar.set_ticks(color = 'white')
+cbar.ax.tick_params(which='both', color='white', labelcolor='white')
 cbar.ax.set_ylabel('Latitude (˚N)', color = 'white')
 ax.grid()
 ax.ticklabel_format(scilimits=(0,0), axis = 'both')
