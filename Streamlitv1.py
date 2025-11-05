@@ -396,7 +396,7 @@ taxa_filled_small[stn_ID] = taxa_filled[stn_ID]
 toplot = taxa_filled_small[taxa_filled_small['protname'].str.contains(protselect)] #ko:K16087, ko:K16091, ko:K09815,ko:K02077,ko:K11959
 maxval = toplot[stn_ID].max().max()
 xlabels = stn_keys
-fig = plt.figure()#figsize = (8, 3)
+fig = plt.figure(figsize = (8, 3))
 fig.patch.set_alpha(0.0)
 cmap = ListedColormap(['#01ff07','#fe01b1','#ff9408','#a9561e','#490648','#aa23ff','#13bbaf','#247afd','#ec2d01','#3f9b0b', 'gray','tan','palegreen'])
 
