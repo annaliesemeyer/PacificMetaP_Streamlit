@@ -43,121 +43,126 @@ mpl.rcParams['ytick.direction'] = 'in'
 mpl.rcParams["legend.frameon"] = False
 mpl.rcParams["axes.axisbelow"] = True
 
-conn = st.connection('s3', type=FilesConnection)
-taxa_filled_02 = conn.read("pacific-metap/GP15-17-OCE-02-3um.csv", input_format="csv")
-taxa_filled_3 = conn.read("pacific-metap/GP15-17-OCE-3-51um.csv", input_format="csv")
+@st.cache_data
+def loadasw():
+    conn = st.connection('s3', type=FilesConnection)
+    taxa_filled_02 = conn.read("pacific-metap/GP15-17-OCE-02-3um.csv", input_format="csv")
+    taxa_filled_3 = conn.read("pacific-metap/GP15-17-OCE-3-51um.csv", input_format="csv")
+    return taxa_filled_02, taxa_filled_3
 #taxa_filled_02 = pd.read_csv('GP15-17-OCE-02-3um.csv',low_memory=False)
 #taxa_filled_3 = pd.read_csv('GP15-17-OCE-3-51um.csv',low_memory=False)
 
 sizefract = st.sidebar.radio('Size Fraction:',['0.2 - 3 µm', '3 - 51 µm'],index = 0)
 
-if sizefract =='0.2 - 3 µm':
-    taxa_domain_summed = pd.read_csv('Int_files_Streamlit/domain_02.csv')
-    taxa_clade1_summed = pd.read_csv('Int_files_Streamlit/clade1_02.csv')
-    taxa_clade2_summed = pd.read_csv('Int_files_Streamlit/clade2_02.csv')
-    taxa_clade3_summed = pd.read_csv('Int_files_Streamlit/clade3_02.csv')
-    taxa_clade4_summed = pd.read_csv('Int_files_Streamlit/clade4_02.csv')
-    taxa_clade5_summed = pd.read_csv('Int_files_Streamlit/clade5_02.csv')
-    taxa_genus_summed = pd.read_csv('Int_files_Streamlit/genus_02.csv')
-    taxa_species_summed = pd.read_csv('Int_files_Streamlit/species_02.csv')
-    taxa_kegg_summed = pd.read_csv('Int_files_Streamlit/kegg_02.csv')
-    taxa_cog_summed = pd.read_csv('Int_files_Streamlit/cog_02.csv')
-    taxa_protname_summed = pd.read_csv('Int_files_Streamlit/protname_02.csv')
-    taxa_path_summed = pd.read_csv('Int_files_Streamlit/path_02.csv')
-    taxa_EC_summed = pd.read_csv('Int_files_Streamlit/EC_02.csv')
-    taxa_PFAM_summed = pd.read_csv('Int_files_Streamlit/PFAM_02.csv')
-    taxa_module_summed = pd.read_csv('Int_files_Streamlit/module_02.csv')
-#    taxa_GO_summed = pd.read_csv('Int_files_Streamlit/GO_02.csv')
-    taxa_TC_summed = pd.read_csv('Int_files_Streamlit/TC_02.csv')
-    taxa_filled = taxa_filled_02
-    stn = pd.read_csv('GP15-17-OCE_stns.txt', sep='\t', encoding='latin-1')
-    stn_names = pd.read_csv(r'Stn_Names_comma.csv')
-    stn_ID = stn_names.Stn.astype(str)
-    stn_ID = np.array(stn_ID)
-    stn_keys = [1,3,4,5,6,8,9,10,12,14,15,16,18,18.3,19,21,23,25,27,29,31,33,35,37,39,1,3,6,8,10,12,14,16,18,20,22,25,27,29,32,33,35,37,38]
-    stn_vals = ['GP15_02_1', 'GP15_02_3', 'GP15_02_4', 'GP15_02_5', 'GP15_02_6',
-       'GP15_02_8', 'GP15_02_9', 'GP15_02_10', 'GP15_02_12', 'GP15_02_14',
-       'GP15_02_15', 'GP15_02_16', 'GP15_02_18', 'GP15_02_18-3',
-       'GP15_02_19', 'GP15_02_21', 'GP15_02_23', 'GP15_02_25',
-       'GP15_02_27', 'GP15_02_29', 'GP15_02_31', 'GP15_02_33',
-       'GP15_02_35', 'GP15_02_37', 'GP15_02_39', 'GP17-OCE_02_1',
-       'GP17-OCE_02_3', 'GP17-OCE_02_6', 'GP17-OCE_02_8',
-       'GP17-OCE_02_10', 'GP17-OCE_02_12', 'GP17-OCE_02_14',
-       'GP17-OCE_02_16', 'GP17-OCE_02_18', 'GP17-OCE_02_20',
-       'GP17-OCE_02_22', 'GP17-OCE_02_25', 'GP17-OCE_02_27',
-       'GP17-OCE_02_29', 'GP17-OCE_02_32', 'GP17-OCE_02_33',
-       'GP17-OCE_02_35', 'GP17-OCE_02_37', 'GP17-OCE_02_38']
-    stn_dict = dict(zip(stn_keys, stn_vals))
+@st.cache_data
+def picksize(sizef):
+    if sizef =='0.2 - 3 µm':
+        taxa_domain_summed = pd.read_csv('Int_files_Streamlit/domain_02.csv')
+        taxa_clade1_summed = pd.read_csv('Int_files_Streamlit/clade1_02.csv')
+        taxa_clade2_summed = pd.read_csv('Int_files_Streamlit/clade2_02.csv')
+        taxa_clade3_summed = pd.read_csv('Int_files_Streamlit/clade3_02.csv')
+        taxa_clade4_summed = pd.read_csv('Int_files_Streamlit/clade4_02.csv')
+        taxa_clade5_summed = pd.read_csv('Int_files_Streamlit/clade5_02.csv')
+        taxa_genus_summed = pd.read_csv('Int_files_Streamlit/genus_02.csv')
+        taxa_species_summed = pd.read_csv('Int_files_Streamlit/species_02.csv')
+        taxa_kegg_summed = pd.read_csv('Int_files_Streamlit/kegg_02.csv')
+        taxa_cog_summed = pd.read_csv('Int_files_Streamlit/cog_02.csv')
+        taxa_protname_summed = pd.read_csv('Int_files_Streamlit/protname_02.csv')
+        taxa_path_summed = pd.read_csv('Int_files_Streamlit/path_02.csv')
+        taxa_EC_summed = pd.read_csv('Int_files_Streamlit/EC_02.csv')
+        taxa_PFAM_summed = pd.read_csv('Int_files_Streamlit/PFAM_02.csv')
+        taxa_module_summed = pd.read_csv('Int_files_Streamlit/module_02.csv')
+    #    taxa_GO_summed = pd.read_csv('Int_files_Streamlit/GO_02.csv')
+        taxa_TC_summed = pd.read_csv('Int_files_Streamlit/TC_02.csv')
+        taxa_filled = taxa_filled_02
+        stn = pd.read_csv('GP15-17-OCE_stns.txt', sep='\t', encoding='latin-1')
+        stn_names = pd.read_csv(r'Stn_Names_comma.csv')
+        stn_ID = stn_names.Stn.astype(str)
+        stn_ID = np.array(stn_ID)
+        stn_keys = [1,3,4,5,6,8,9,10,12,14,15,16,18,18.3,19,21,23,25,27,29,31,33,35,37,39,1,3,6,8,10,12,14,16,18,20,22,25,27,29,32,33,35,37,38]
+        stn_vals = ['GP15_02_1', 'GP15_02_3', 'GP15_02_4', 'GP15_02_5', 'GP15_02_6',
+           'GP15_02_8', 'GP15_02_9', 'GP15_02_10', 'GP15_02_12', 'GP15_02_14',
+           'GP15_02_15', 'GP15_02_16', 'GP15_02_18', 'GP15_02_18-3',
+           'GP15_02_19', 'GP15_02_21', 'GP15_02_23', 'GP15_02_25',
+           'GP15_02_27', 'GP15_02_29', 'GP15_02_31', 'GP15_02_33',
+           'GP15_02_35', 'GP15_02_37', 'GP15_02_39', 'GP17-OCE_02_1',
+           'GP17-OCE_02_3', 'GP17-OCE_02_6', 'GP17-OCE_02_8',
+           'GP17-OCE_02_10', 'GP17-OCE_02_12', 'GP17-OCE_02_14',
+           'GP17-OCE_02_16', 'GP17-OCE_02_18', 'GP17-OCE_02_20',
+           'GP17-OCE_02_22', 'GP17-OCE_02_25', 'GP17-OCE_02_27',
+           'GP17-OCE_02_29', 'GP17-OCE_02_32', 'GP17-OCE_02_33',
+           'GP17-OCE_02_35', 'GP17-OCE_02_37', 'GP17-OCE_02_38']
+        stn_dict = dict(zip(stn_keys, stn_vals))
+        
     
-
-if sizefract =='3 - 51 µm':
-    taxa_domain_summed = pd.read_csv('Int_files_Streamlit/domain_3.csv')
-    taxa_clade1_summed = pd.read_csv('Int_files_Streamlit/clade1_3.csv')
-    taxa_clade2_summed = pd.read_csv('Int_files_Streamlit/clade2_3.csv')
-    taxa_clade3_summed = pd.read_csv('Int_files_Streamlit/clade3_3.csv')
-    taxa_clade4_summed = pd.read_csv('Int_files_Streamlit/clade4_3.csv')
-    taxa_clade5_summed = pd.read_csv('Int_files_Streamlit/clade5_3.csv')
-    taxa_genus_summed = pd.read_csv('Int_files_Streamlit/genus_3.csv')
-    taxa_species_summed = pd.read_csv('Int_files_Streamlit/species_3.csv')
-    taxa_kegg_summed = pd.read_csv('Int_files_Streamlit/kegg_3.csv')
-    taxa_cog_summed = pd.read_csv('Int_files_Streamlit/cog_3.csv')
-    taxa_protname_summed = pd.read_csv('Int_files_Streamlit/protname_3.csv')
-    taxa_path_summed = pd.read_csv('Int_files_Streamlit/path_3.csv')
-    taxa_EC_summed = pd.read_csv('Int_files_Streamlit/EC_3.csv')
-    taxa_PFAM_summed = pd.read_csv('Int_files_Streamlit/PFAM_3.csv')
-    taxa_module_summed = pd.read_csv('Int_files_Streamlit/module_3.csv')
-#    taxa_GO_summed = pd.read_csv('Int_files_Streamlit/GO_3.csv')
-    taxa_TC_summed = pd.read_csv('Int_files_Streamlit/TC_3.csv')
-    taxa_filled = taxa_filled_3  
-    stn = pd.read_csv('GP15-17-OCE_stns3.txt', sep='\t', encoding='latin-1')
-    stn3 = pd.read_csv('stnlabel_to_ID_3.txt', sep='\t', encoding='latin-1')
-    stn_ID = stn3['Stn ID'].astype(str)
-    stn_ID = np.array(stn_ID)
-    stn_keys=[3,4,5,6,8,9,10,12,14,15,16,18,18.3,19,21,23,25,27,29,31,33,35,37,39,1,3,6,8,10,12,14,16,18,20,22,25,27,32,33,35,37,38]
-    stn_vals = ['GP15_3_3',
-     'GP15_3_4',
-     'GP15_3_5',
-     'GP15_3_6',
-     'GP15_3_8',
-     'GP15_3_9',
-     'GP15_3_10',
-     'GP15_3_12',
-     'GP15_3_14',
-     'GP15_3_15',
-     'GP15_3_16',
-     'GP15_3_18',
-     'GP15_3_18-3',
-     'GP15_3_19',
-     'GP15_3_21',
-     'GP15_3_23',
-     'GP15_3_25',
-     'GP15_3_27',
-     'GP15_3_29',
-     'GP15_3_31',
-     'GP15_3_33',
-     'GP15_3_35',
-     'GP15_3_37',
-     'GP15_3_39',
-     'GP17-OCE_3_1',
-     'GP17-OCE_3_3',
-     'GP17-OCE_3_6',
-     'GP17-OCE_3_8',
-     'GP17-OCE_3_10',
-     'GP17-OCE_3_12',
-     'GP17-OCE_3_14',
-     'GP17-OCE_3_16',
-     'GP17-OCE_3_18',
-     'GP17-OCE_3_20',
-     'GP17-OCE_3_22',
-     'GP17-OCE_3_25',
-     'GP17-OCE_3_27',
-     'GP17-OCE_3_32',
-     'GP17-OCE_3_33',
-     'GP17-OCE_3_35',
-     'GP17-OCE_3_37',
-     'GP17-OCE_3_38']
-    stn_dict3 = dict(zip(stn_keys, stn_vals))
-
+    if sizef =='3 - 51 µm':
+        taxa_domain_summed = pd.read_csv('Int_files_Streamlit/domain_3.csv')
+        taxa_clade1_summed = pd.read_csv('Int_files_Streamlit/clade1_3.csv')
+        taxa_clade2_summed = pd.read_csv('Int_files_Streamlit/clade2_3.csv')
+        taxa_clade3_summed = pd.read_csv('Int_files_Streamlit/clade3_3.csv')
+        taxa_clade4_summed = pd.read_csv('Int_files_Streamlit/clade4_3.csv')
+        taxa_clade5_summed = pd.read_csv('Int_files_Streamlit/clade5_3.csv')
+        taxa_genus_summed = pd.read_csv('Int_files_Streamlit/genus_3.csv')
+        taxa_species_summed = pd.read_csv('Int_files_Streamlit/species_3.csv')
+        taxa_kegg_summed = pd.read_csv('Int_files_Streamlit/kegg_3.csv')
+        taxa_cog_summed = pd.read_csv('Int_files_Streamlit/cog_3.csv')
+        taxa_protname_summed = pd.read_csv('Int_files_Streamlit/protname_3.csv')
+        taxa_path_summed = pd.read_csv('Int_files_Streamlit/path_3.csv')
+        taxa_EC_summed = pd.read_csv('Int_files_Streamlit/EC_3.csv')
+        taxa_PFAM_summed = pd.read_csv('Int_files_Streamlit/PFAM_3.csv')
+        taxa_module_summed = pd.read_csv('Int_files_Streamlit/module_3.csv')
+    #    taxa_GO_summed = pd.read_csv('Int_files_Streamlit/GO_3.csv')
+        taxa_TC_summed = pd.read_csv('Int_files_Streamlit/TC_3.csv')
+        taxa_filled = taxa_filled_3  
+        stn = pd.read_csv('GP15-17-OCE_stns3.txt', sep='\t', encoding='latin-1')
+        stn3 = pd.read_csv('stnlabel_to_ID_3.txt', sep='\t', encoding='latin-1')
+        stn_ID = stn3['Stn ID'].astype(str)
+        stn_ID = np.array(stn_ID)
+        stn_keys=[3,4,5,6,8,9,10,12,14,15,16,18,18.3,19,21,23,25,27,29,31,33,35,37,39,1,3,6,8,10,12,14,16,18,20,22,25,27,32,33,35,37,38]
+        stn_vals = ['GP15_3_3',
+         'GP15_3_4',
+         'GP15_3_5',
+         'GP15_3_6',
+         'GP15_3_8',
+         'GP15_3_9',
+         'GP15_3_10',
+         'GP15_3_12',
+         'GP15_3_14',
+         'GP15_3_15',
+         'GP15_3_16',
+         'GP15_3_18',
+         'GP15_3_18-3',
+         'GP15_3_19',
+         'GP15_3_21',
+         'GP15_3_23',
+         'GP15_3_25',
+         'GP15_3_27',
+         'GP15_3_29',
+         'GP15_3_31',
+         'GP15_3_33',
+         'GP15_3_35',
+         'GP15_3_37',
+         'GP15_3_39',
+         'GP17-OCE_3_1',
+         'GP17-OCE_3_3',
+         'GP17-OCE_3_6',
+         'GP17-OCE_3_8',
+         'GP17-OCE_3_10',
+         'GP17-OCE_3_12',
+         'GP17-OCE_3_14',
+         'GP17-OCE_3_16',
+         'GP17-OCE_3_18',
+         'GP17-OCE_3_20',
+         'GP17-OCE_3_22',
+         'GP17-OCE_3_25',
+         'GP17-OCE_3_27',
+         'GP17-OCE_3_32',
+         'GP17-OCE_3_33',
+         'GP17-OCE_3_35',
+         'GP17-OCE_3_37',
+         'GP17-OCE_3_38']
+        stn_dict3 = dict(zip(stn_keys, stn_vals))
+    return taxa_domain_summed, taxa_clade1_summed, taxa_clade2_summed, taxa_clade3_summed, taxa_clade4_summed, taxa_clade5_summed, taxa_genus_summed, taxa_species_summed, taxa_kegg_summed, taxa_cog_summed, taxa_protname_summed, taxa_path_summed, taxa_EC_summed, taxa_PFAM_summed, taxa_module_summed, taxa_TC_summed, taxa_filled, stn, stn_ID, stn_keys, stn_vals
 
 st.markdown('# Pacific Metaproteomics Surface Transect')
 st.markdown('#### Created by Annaliese Meyer')
