@@ -160,11 +160,10 @@ if sizefract =='3 - 51 µm':
 
 
 st.markdown('# Pacific Metaproteomics Surface Transect')
-st.markdown('Created by Annaliese Meyer')
+st.markdown('#### Created by Annaliese Meyer')
 st.markdown('Contact: acsmeyer@mit.edu')
 st.markdown('These data are to be used for educational purposes only.')
-st.markdown('## Explore the dataset!')
-st.markdown('### Community Composition')
+st.markdown('## Community Composition')
 ################
 optiontax = st.selectbox('Taxonomic Resolution:',['Domain', 'Supergroup', 'Phylum', 'Class','Order','Family','Genus','Species'],index = 0)
 
@@ -329,7 +328,7 @@ Acid Phosphatase	| Acid phosphatase
 
 
 ####
-st.markdown('### Functional Distribution')
+st.markdown('## Functional Distribution')
 
 protselect = st.selectbox('Select a protein or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
 
@@ -386,8 +385,11 @@ fig.update_layout(
     margin=dict(pad=0, r=2, t=2, b=2, l=2)
 )
 
-st.plotly_chart(fig,use_container_width=False)
-
+col1, col2 = st.columns(2)
+with col1:
+    st.plotly_chart(fig,use_container_width=False)
+with col2:
+    st.markdown('sample text')
 
 ##########################################
 
