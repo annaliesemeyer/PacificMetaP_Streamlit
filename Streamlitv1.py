@@ -158,6 +158,7 @@ if sizefract =='3 - 51 µm':
 st.markdown('# Pacific Metaproteomics Surface Transect')
 st.markdown('Created by Annaliese Meyer')
 st.markdown('Contact: acsmeyer@mit.edu')
+
 ################
 optiontax = st.selectbox('Taxonomic Resolution:',['Domain', 'Supergroup', 'Phylum', 'Class','Order','Family','Genus','Species'],index = 0)
 
@@ -422,7 +423,7 @@ fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize 
 ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 
 #st.pyplot(fig, width = 'stretch')
-fig.savefig('lines.png', format="png", dpi=1500, transparent=True, bbox_inches = "tight")
+fig.savefig('lines.png', format="png", dpi=300, transparent=True, bbox_inches = "tight")
 st.image('lines.png', width = 'stretch')
 
 
