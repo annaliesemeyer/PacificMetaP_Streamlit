@@ -52,6 +52,8 @@ def loadasw():
 #taxa_filled_02 = pd.read_csv('GP15-17-OCE-02-3um.csv',low_memory=False)
 #taxa_filled_3 = pd.read_csv('GP15-17-OCE-3-51um.csv',low_memory=False)
 
+loadasw()
+
 sizefract = st.sidebar.radio('Size Fraction:',['0.2 - 3 µm', '3 - 51 µm'],index = 0)
 
 @st.cache_data
@@ -163,6 +165,8 @@ def picksize(sizef):
          'GP17-OCE_3_38']
         stn_dict3 = dict(zip(stn_keys, stn_vals))
     return taxa_domain_summed, taxa_clade1_summed, taxa_clade2_summed, taxa_clade3_summed, taxa_clade4_summed, taxa_clade5_summed, taxa_genus_summed, taxa_species_summed, taxa_kegg_summed, taxa_cog_summed, taxa_protname_summed, taxa_path_summed, taxa_EC_summed, taxa_PFAM_summed, taxa_module_summed, taxa_TC_summed, taxa_filled, stn, stn_ID, stn_keys, stn_vals
+
+picksize(sizefract)
 
 st.markdown('# Pacific Metaproteomics Surface Transect')
 st.markdown('#### Created by Annaliese Meyer')
