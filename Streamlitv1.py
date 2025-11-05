@@ -43,7 +43,7 @@ mpl.rcParams['ytick.direction'] = 'in'
 mpl.rcParams["legend.frameon"] = False
 mpl.rcParams["axes.axisbelow"] = True
 
-@st.cache_data
+@st.cache_resource
 def loadasw():
     conn = st.connection('s3', type=FilesConnection)
     taxa_filled_02 = conn.read("pacific-metap/GP15-17-OCE-02-3um_small.csv", input_format="csv")
