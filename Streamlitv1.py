@@ -162,7 +162,9 @@ if sizefract =='3 - 51 µm':
 st.markdown('# Pacific Metaproteomics Surface Transect')
 st.markdown('Created by Annaliese Meyer')
 st.markdown('Contact: acsmeyer@mit.edu')
-
+st.markdown('These data are to be used for educational purposes only.')
+st.markdown('## Explore the dataset!"
+st.markdown('### Community Composition')
 ################
 optiontax = st.selectbox('Taxonomic Resolution:',['Domain', 'Supergroup', 'Phylum', 'Class','Order','Family','Genus','Species'],index = 0)
 
@@ -262,8 +264,8 @@ with con1:
 
 
 markersinfo = '''
-## Protein Markers
-### Iron
+### Protein Markers
+#### Iron
 | Protein Name | Function |
 | :- | :- |
 FecA	| Fe(III) dicitrate transport protein
@@ -281,7 +283,7 @@ Fiu	| Catecholate siderophore receptor
 SfuA	| Fe(III) transport system SBP
 BhuR/HemR/TbpA	| Hemoglobin/transferrin/lactoferrin receptor
 
-### Zinc
+#### Zinc
 | Protein Name | Function |
 | :- | :- |
 FtsH	| Cell division metalloprotease
@@ -290,7 +292,7 @@ COG0523 Cluster 1	| Putative Zn chaperone
 ZnuA	| Zn transport system SBP
 ZnuD	| Zn transport system ATP-binding protein
 
-### Vitamin B12
+#### Vitamin B12
 | Protein Name | Function |
 | :- | :- |
 NrdJ	| Ribonucleotide reductase, class II (B12-dependent)
@@ -303,7 +305,7 @@ CUBN	| B12 outer membrane receptor
 CobA	| B12 synthesis protein (cob(I)alamin adenosyltransferase)
 CobS	| B12 synthesis protein (cobaltochelatase)
 
-### Nitrate
+#### Nitrate
 | Protein Name | Function |
 | :- | :- |
 UrtA	| Urea transport system SBP
@@ -314,7 +316,7 @@ UreC	| Urease
 NtrP	| Nitrate/Nitrite transporter
 NtcA	| Global nitrogen transcriptional regulator
 
-### Phosphate
+#### Phosphate
 | Protein Name | Function |
 | :- | :- |
 PstB	| Phosphate transport system ATP-binding protein
@@ -327,6 +329,7 @@ Acid Phosphatase	| Acid phosphatase
 
 
 ####
+st.markdown('### Functional Distribution')
 
 protselect = st.selectbox('Select a protein or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
 
