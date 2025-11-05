@@ -422,7 +422,7 @@ fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize 
 ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 
 #st.pyplot(fig, width = 'stretch')
-fig.savefig('lines.png', format="png", dpi=1000, transparent=True)
+fig.savefig('lines.png', format="png", dpi=1500, transparent=True, bbox_inches = "tight")
 st.image('lines.png', width = 'stretch')
 
 
