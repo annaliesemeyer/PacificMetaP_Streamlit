@@ -210,10 +210,10 @@ st.plotly_chart(fig,use_container_width=True)
 #############
 
 taxselect = st.selectbox('Taxon:',list(data.clade.unique()))
-#col1, col2 = st.columns(2)
+col1, col2 = st.columns(2)
 #con1 = col1.container(border=True)
-con1 = st.container()
-with con1:
+
+with col1:
     data1 = data[data['clade'].str.contains(taxselect)]
     
     data2 = data1.groupby("stn").agg(
@@ -255,6 +255,8 @@ with con1:
 )
     st.plotly_chart(fig,use_container_width=False)
 
+with col2:
+    st.markdown('The bubbles on this map show the relative amount of '+ str(taxselect) + ' at each station along the transect. Hover over each point for the station name and the fractional contribution of that taxon to the proteins at that station.'
 ##############
 
 #markertable = pd.read_csv('proteinmarkertable.csv')
