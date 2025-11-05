@@ -54,11 +54,11 @@ def loadasw():
 
 taxa_filled_02, taxa_filled_3 = loadasw()
 
-sizefract = st.sidebar.radio('Size Fraction:',['0.2 - 3 µm', '3 - 51 µm'],index = 0)
+sizefract = st.sidebar.radio('Size Fraction:',['0.2–3 µm', '3–51 µm'],index = 0)
 
 @st.cache_data
 def picksize(sizef):
-    if sizef =='0.2 - 3 µm':
+    if sizef =='0.2–3 µm':
         taxa_domain_summed = pd.read_csv('Int_files_Streamlit/domain_02.csv')
         taxa_clade1_summed = pd.read_csv('Int_files_Streamlit/clade1_02.csv')
         taxa_clade2_summed = pd.read_csv('Int_files_Streamlit/clade2_02.csv')
@@ -97,7 +97,7 @@ def picksize(sizef):
         stn_dict = dict(zip(stn_keys, stn_vals))
         
     
-    if sizef =='3 - 51 µm':
+    if sizef =='3–51 µm':
         taxa_domain_summed = pd.read_csv('Int_files_Streamlit/domain_3.csv')
         taxa_clade1_summed = pd.read_csv('Int_files_Streamlit/clade1_3.csv')
         taxa_clade2_summed = pd.read_csv('Int_files_Streamlit/clade2_3.csv')
@@ -248,7 +248,7 @@ with col1:
     fig.update_layout(height=1000, width = 700)
     fig.update_layout(coloraxis_colorbar_title_text = '% per station')
     fig.update_layout(
-        autosize=False,
+        autosize=True,
         hovermode='closest',
         map=dict(
             bearing=0,
@@ -270,7 +270,7 @@ with col1:
     paper_bgcolor='indigo',
     margin=dict(pad=0, r=2, t=2, b=2, l=2)
 )
-    st.plotly_chart(fig,use_container_width=False)
+    st.plotly_chart(fig,use_container_width=True)
 
 with col2:
     st.markdown('The bubbles on this map show the relative amount of '+ str(taxselect) + ' in the '+str(sizefract)+' size fraction at each station along the transect. Hover over each point for the station name and the fractional contribution of that taxon to the proteins at that station.')
@@ -406,7 +406,7 @@ fig.update_layout(
 
 col1, col2 = st.columns(2)
 with col1:
-    st.plotly_chart(fig,use_container_width=False)
+    st.plotly_chart(fig,use_container_width=True)
 with col2:
     st.markdown('The bubbles on this map show the relative amount of '+ str(protselect) + ' from any organism in the '+str(sizefract)+' size fraction at each station along the transect. Hover over each point for the station name and the fractional contribution of that protein to the total number of proteins detected at that station.')
 
