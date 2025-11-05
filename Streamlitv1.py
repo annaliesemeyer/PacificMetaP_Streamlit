@@ -423,8 +423,9 @@ fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize 
 ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 
 #st.pyplot(fig, width = 'stretch')
-fig.savefig('lines.png', format="png", dpi=600, transparent=True, bbox_inches = "tight")
-st.image('lines.png', width = 'stretch',output_format="PNG")
+fig.savefig('lines.pdf', format="pdf", transparent=True, bbox_inches = "tight")
+st.pdf('lines.pdf', width = 'stretch')
+#st.image('lines.png', width = 'stretch',output_format="PNG")
 
 
 
