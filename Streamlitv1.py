@@ -489,7 +489,6 @@ datac = datab.groupby("stn").agg(
 datagroupa = datac.groupby('station')
 
 
-
 fig = plt.figure()
 
 fig.patch.set_facecolor('black')
@@ -523,5 +522,9 @@ ax.tick_params(axis='x', colors="palegreen", labelsize =10)
 fig.savefig('comps.svg', format="svg", bbox_inches = "tight")
 #st.pdf('comps.pdf', height = 'stretch')
 
-st.image('comps.svg', width = 'stretch',output_format="PNG")
+col1, col2 = st.columns(2)
+
+with col1:
+    
+    st.image('comps.svg', width = 'stretch',output_format="PNG")
 
