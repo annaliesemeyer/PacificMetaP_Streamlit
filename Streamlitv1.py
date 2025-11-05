@@ -542,4 +542,4 @@ with col1:
     st.image('comps.svg', width = 'stretch',output_format="PNG")
 
 with col2:
-    st.markdown('This plot compares the fractional abundance of two proteins. The latitude of each associated station is indicated by the marker shading.'
+    st.markdown('This plot compares the fractional abundance of two proteins. The latitude of each associated station is indicated by the marker shading.')
