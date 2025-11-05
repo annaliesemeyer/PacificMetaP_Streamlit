@@ -453,9 +453,8 @@ st.image('lines.svg', width = 'stretch',output_format="PNG")
 
 
 
-
 ##########################################
-
+st.markdown('#### Protein Comparisons')
 #compare proteins
 col1, col2 = st.columns(2)
 
