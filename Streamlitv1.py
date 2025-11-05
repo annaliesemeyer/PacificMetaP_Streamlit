@@ -174,7 +174,7 @@ st.markdown('Contact: acsmeyer@mit.edu')
 st.markdown('These samples were collected as part of the GEOTRACES GP15 and GP17-OCE cruises. All data are presented as NSAF-normalized fractional abundances. 167 000 proteins were identified in the 0.2–3 µm size fraction, and 163 000 in the 3–51 µm fraction. You can select your size fraction of interest in the sidebar.')
 st.markdown('These data are to be used for educational purposes only.')
 
-st.cache_resource
+@st.cache_resource
 def loadimage():
     st.image('Methods.svg', width = 'stretch',output_format="PNG")
 
