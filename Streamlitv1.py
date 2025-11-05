@@ -256,7 +256,7 @@ with col1:
     st.plotly_chart(fig,use_container_width=False)
 
 with col2:
-    st.markdown('The bubbles on this map show the relative amount of '+ str(taxselect) + ' at each station along the transect. Hover over each point for the station name and the fractional contribution of that taxon to the proteins at that station.'
+    st.markdown('The bubbles on this map show the relative amount of '+ str(taxselect) + ' at each station along the transect. Hover over each point for the station name and the fractional contribution of that taxon to the proteins at that station.')
 ##############
 
 #markertable = pd.read_csv('proteinmarkertable.csv')
