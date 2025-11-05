@@ -10,3 +10,4 @@ plotly
 plotly.express
 umap
 IPython.utils
+streamlit[pdf]
