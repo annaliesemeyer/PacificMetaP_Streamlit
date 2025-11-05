@@ -266,7 +266,7 @@ with col1:
     st.plotly_chart(fig,use_container_width=False)
 
 with col2:
-    st.markdown('The bubbles on this map show the relative amount of '+ str(taxselect) + ' at each station along the transect. Hover over each point for the station name and the fractional contribution of that taxon to the proteins at that station.')
+    st.markdown('The bubbles on this map show the relative amount of '+ str(taxselect) + ' in the '+str(sizefract)+' at each station along the transect. Hover over each point for the station name and the fractional contribution of that taxon to the proteins at that station.')
 ##############
 
 #markertable = pd.read_csv('proteinmarkertable.csv')
@@ -401,7 +401,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.plotly_chart(fig,use_container_width=False)
 with col2:
-    st.markdown('The bubbles on this map show the relative amount of '+ str(protselect) + ' from any organism at each station along the transect. Hover over each point for the station name and the fractional contribution of that protein to the total number of proteins detected at that station.')
+    st.markdown('The bubbles on this map show the relative amount of '+ str(protselect) + ' from any organism in the '+str(sizefract)+' at each station along the transect. Hover over each point for the station name and the fractional contribution of that protein to the total number of proteins detected at that station.')
 
 ##########################################
 
@@ -449,7 +449,7 @@ ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 fig.savefig('lines.svg', format="svg", bbox_inches = "tight")
 #st.pdf('lines.pdf', height = 'stretch')
 
-st.markdown('This plot shows the fractional abundance of '+str(protselect)+' across the transect. Each individual line corresponds to a distinct version of the detected protein from a specific species. The line colours correspond with your selected taxonomic rank, '+str(optiontax)+'.')
+st.markdown('This plot shows the fractional abundance of '+str(protselect)+' in the ' + str(sizefract)+' across the transect. Each individual line corresponds to a distinct version of the detected protein from a specific species. The line colours correspond with your selected taxonomic rank, '+str(optiontax)+'.')
 st.image('lines.svg', width = 'stretch',output_format="PNG")
 
 
@@ -553,4 +553,4 @@ with col1:
     st.image('comps.svg', width = 'stretch',output_format="PNG")
 
 with col2:
-    st.markdown('This plot compares the fractional abundance of two proteins. The latitude of each associated station is indicated by the marker shading.')
+    st.markdown('This plot compares the fractional abundance of two proteins in the '+str(sizefract)+'. The latitude of each associated station is indicated by the marker shading.')
