@@ -162,6 +162,7 @@ if sizefract =='3 - 51 µm':
 st.markdown('# Pacific Metaproteomics Surface Transect')
 st.markdown('#### Created by Annaliese Meyer')
 st.markdown('Contact: acsmeyer@mit.edu')
+st.markdown('These samples were collected as part of the GEOTRACES GP15 and GP17-OCE cruises. All data is presented as NSAF-normalized fractional abundances. 167 000 proteins were identified in the 0.2–3 µm size fraction, and 163 000 in the 3–51 µm fraction. You can select your size fraction of interest in the sidebar.')
 st.markdown('These data are to be used for educational purposes only.')
 st.markdown('## Community Composition')
 ################
@@ -269,61 +270,61 @@ markersinfo = '''
 #### Iron
 | Protein Name | Function |
 | :- | :- |
-FecA	| Fe(III) dicitrate transport protein
-FecB | Fe complex transport system SBP
-FutA1/AfuA	| Fe(III) transport system SBP
-IrpA/IcmP	| Putative Fe regulated protein
-Ftn	| Ferritin - Fe storage protein
-IsiB/NifF/FldA |	Flavodoxin - electron transport protein
-EfeO	| Fe uptake system component
-EfeU	| High affinity Fe transporter
-Acr	| Fe complex outer membrane receptor
-Sir | Ferredoxin-sulfite reductase
-Ho1, PbsA1, HmuO |	Heme oxygenase
-Fiu	| Catecholate siderophore receptor
-SfuA	| Fe(III) transport system SBP
-BhuR/HemR/TbpA	| Hemoglobin/transferrin/lactoferrin receptor
+fecA	| Fe(III) dicitrate transport protein
+fecB | Fe complex transport system SBP
+futA1/afuA	| Fe(III) transport system SBP
+irpA/icmP	| Putative Fe regulated protein
+ftn	| Ferritin - Fe storage protein
+isiB/nifF/fldA |	Flavodoxin - electron transport protein
+efeO	| Fe uptake system component
+efeU	| High affinity Fe transporter
+acr	| Fe complex outer membrane receptor
+sir | Ferredoxin-sulfite reductase
+ho1, pbsA1, hmuO |	Heme oxygenase
+fiu	| Catecholate siderophore receptor
+sfuA	| Fe(III) transport system SBP
+bhuR/hemR/TbpA	| Hemoglobin/transferrin/lactoferrin receptor
 
 #### Zinc
 | Protein Name | Function |
 | :- | :- |
-FtsH	| Cell division metalloprotease
+ftsH	| Cell division metalloprotease
 lraI	| Zn/Mn transport system SBP
 COG0523 Cluster 1	| Putative Zn chaperone
-ZnuA	| Zn transport system SBP
-ZnuD	| Zn transport system ATP-binding protein
+znuA	| Zn transport system SBP
+znuD	| Zn transport system ATP-binding protein
 
 #### Vitamin B12
 | Protein Name | Function |
 | :- | :- |
-NrdJ	| Ribonucleotide reductase, class II (B12-dependent)
-NrdA/Z	| Ribonucleotide reductase, class Ia (B12-independent)
-NrdB	| Ribonucleotide reductase, class Ia (B12-independent)
-BtuB	| B12 outer membrane transporter
-MetH	| Methionine synthase (B12-dependent)
-MetE	| Methionine synthase (B12-independent)
-CUBN	| B12 outer membrane receptor
-CobA	| B12 synthesis protein (cob(I)alamin adenosyltransferase)
-CobS	| B12 synthesis protein (cobaltochelatase)
+nrdJ	| Ribonucleotide reductase, class II (B12-dependent)
+nrdA/Z	| Ribonucleotide reductase, class Ia (B12-independent)
+nrdB	| Ribonucleotide reductase, class Ia (B12-independent)
+btuB	| B12 outer membrane transporter
+metH	| Methionine synthase (B12-dependent)
+metE	| Methionine synthase (B12-independent)
+cUBN	| B12 outer membrane receptor
+cobA	| B12 synthesis protein (cob(I)alamin adenosyltransferase)
+cobS	| B12 synthesis protein (cobaltochelatase)
 
 #### Nitrate
 | Protein Name | Function |
 | :- | :- |
-UrtA	| Urea transport system SBP
-UrtD	| Urea transport system ATP-binding protein
-UrtE	| Urea transport system ATP-binding protein
-UreA	| Urease
-UreC	| Urease
-NtrP	| Nitrate/Nitrite transporter
-NtcA	| Global nitrogen transcriptional regulator
+urtA	| Urea transport system SBP
+urtD	| Urea transport system ATP-binding protein
+urtE	| Urea transport system ATP-binding protein
+ureA	| Urease
+ureC	| Urease
+ntrP	| Nitrate/Nitrite transporter
+ntcA	| Global nitrogen transcriptional regulator
 
 #### Phosphate
 | Protein Name | Function |
 | :- | :- |
-PstB	| Phosphate transport system ATP-binding protein
-PstS	| Phosphate transport system SBP
-PhnD	| Phosphonate transport system SBP
-SqdB	| Sulfolipid synthesis protein
+pstB	| Phosphate transport system ATP-binding protein
+pstS	| Phosphate transport system SBP
+phnD	| Phosphonate transport system SBP
+sqdB	| Sulfolipid synthesis protein
 PTC1	| Protein phosphatase
 Acid Phosphatase	| Acid phosphatase
 '''
@@ -391,7 +392,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.plotly_chart(fig,use_container_width=False)
 with col2:
-    st.markdown('sample text')
+    st.markdown('The bubbles on this map show the relative amount of '+ str(protselect) + ' from any organism at each station along the transect. Hover over each point for the station name and the fractional contribution of that protein to the total number of proteins detected at that station.')
 
 ##########################################
 
@@ -436,8 +437,9 @@ ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 #st.pyplot(fig, width = 'stretch')
 fig.savefig('lines.svg', format="svg", bbox_inches = "tight")
 #st.pdf('lines.pdf', height = 'stretch')
-st.image('lines.svg', width = 'stretch',output_format="PNG")
 
+st.markdown('This plot shows the fractional abundance of '+str(protselect)+' across the transect. Each individual line corresponds to a distinct version of the detected protein from a specific species. The line colours correspond with your selected taxonomic rank, '+str(optiontax)+'.')
+st.image('lines.svg', width = 'stretch',output_format="PNG")
 
 
 ##########################
@@ -539,3 +541,5 @@ with col1:
     
     st.image('comps.svg', width = 'stretch',output_format="PNG")
 
+with col2:
+    st.markdown('This plot compares the fractional abundance of two proteins. The latitude of each associated station is indicated by the marker shading.'
