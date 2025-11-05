@@ -175,7 +175,7 @@ st.markdown('These samples were collected as part of the GEOTRACES GP15 and GP17
 st.markdown('These data are to be used for educational purposes only.')
 
 st.cache_resource
-def loadimage()
+def loadimage():
     st.image('Methods.svg', width = 'stretch',output_format="PNG")
 
 loadimage()
