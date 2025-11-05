@@ -423,8 +423,8 @@ fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize 
 ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 
 #st.pyplot(fig, width = 'stretch')
-fig.savefig('lines.pdf', format="pdf", transparent=True, bbox_inches = "tight")
-st.pdf('lines.pdf')
+fig.savefig('lines.pdf', format="pdf", bbox_inches = "tight")
+st.pdf('lines.pdf', height = 'stretch')
 #st.image('lines.png', width = 'stretch',output_format="PNG")
 
 
@@ -492,7 +492,7 @@ datagroupa = datac.groupby('station')
 
 fig = plt.figure()
 
-fig.patch.facecolor('black')
+fig.patch.set_facecolor('black')
 ax = plt.subplot()
 #ax.patch.set_alpha(0.0)
 ax.patch.set_facecolor('black')
