@@ -23,6 +23,7 @@ from sklearn import preprocessing
 import umap
 import streamlit as st
 from IPython.utils import io
+from st_files_connection import FilesConnection
 
 st.set_page_config(layout='wide')
 
@@ -42,8 +43,11 @@ mpl.rcParams['ytick.direction'] = 'in'
 mpl.rcParams["legend.frameon"] = False
 mpl.rcParams["axes.axisbelow"] = True
 
-taxa_filled_02 = pd.read_csv('GP15-17-OCE-02-3um.csv',low_memory=False)
-taxa_filled_3 = pd.read_csv('GP15-17-OCE-3-51um.csv',low_memory=False)
+conn = st.connection('s3', type=FilesConnection)
+taxa_filled_02 = conn.read("pacific-metap/GP15-17-OCE-02-3um.csv", input_format="csv")
+taxa_filled_3 = conn.read("pacific-metap/GP15-17-OCE-3-51um.csv", input_format="csv")
+#taxa_filled_02 = pd.read_csv('GP15-17-OCE-02-3um.csv',low_memory=False)
+#taxa_filled_3 = pd.read_csv('GP15-17-OCE-3-51um.csv',low_memory=False)
 
 sizefract = st.sidebar.radio('Size Fraction:',['0.2 - 3 µm', '3 - 51 µm'],index = 0)
 
@@ -511,7 +515,7 @@ ax.ticklabel_format(scilimits=(0,0), axis = 'both')
 #ax.set_xlim(-0.5,100)
 #ax.loglog()
 ax.set_ylabel('$F_{protein 2}$', color = 'palegreen', size = 10)
-ax.set_xlabel('$F_{protein 1}$',color = 'palegreen', size = 10 )
+ax.set_xlabel('$F_{protein 1}$',color = 'palegreen', size = 10)
 ax.spines['top'].set_color("palegreen")
 ax.spines['bottom'].set_color("palegreen")
 ax.spines['left'].set_color("palegreen")

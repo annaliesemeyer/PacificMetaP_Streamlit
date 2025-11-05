@@ -11,3 +11,5 @@ plotly.express
 umap
 IPython.utils
 streamlit[pdf]
+s3fs
+st-files-connection
