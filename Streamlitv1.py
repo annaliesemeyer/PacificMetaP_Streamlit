@@ -424,7 +424,7 @@ ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 
 #st.pyplot(fig, width = 'stretch')
 fig.savefig('lines.pdf', format="pdf", transparent=True, bbox_inches = "tight")
-st.pdf('lines.pdf', width = 'stretch')
+st.pdf('lines.pdf')
 #st.image('lines.png', width = 'stretch',output_format="PNG")
 
 
