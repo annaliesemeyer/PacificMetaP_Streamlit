@@ -46,8 +46,8 @@ mpl.rcParams["axes.axisbelow"] = True
 @st.cache_data
 def loadasw():
     conn = st.connection('s3', type=FilesConnection)
-    taxa_filled_02 = conn.read("pacific-metap/GP15-17-OCE-02-3um.csv", input_format="csv")
-    taxa_filled_3 = conn.read("pacific-metap/GP15-17-OCE-3-51um.csv", input_format="csv")
+    taxa_filled_02 = conn.read("pacific-metap/GP15-17-OCE-02-3um_small.csv", input_format="csv")
+    taxa_filled_3 = conn.read("pacific-metap/GP15-17-OCE-3-51um_small.csv", input_format="csv")
     return taxa_filled_02, taxa_filled_3
 #taxa_filled_02 = pd.read_csv('GP15-17-OCE-02-3um.csv',low_memory=False)
 #taxa_filled_3 = pd.read_csv('GP15-17-OCE-3-51um.csv',low_memory=False)
