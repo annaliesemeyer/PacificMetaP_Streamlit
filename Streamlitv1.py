@@ -412,7 +412,7 @@ ax.spines['bottom'].set_color("palegreen")
 ax.spines['left'].set_color("palegreen")
 ax.spines['right'].set_color("palegreen")
 ax.tick_params(axis='x', colors="#e8e8e8", labelsize = 4.5, size = 0)
-ax.tick_params(axis='y', colors="palegreen", labelsize = 7, size = 0)
+ax.tick_params(axis='y', colors="palegreen", labelsize = 6, size = 0)
 ax.grid(False)
 ax.vlines(range(0,len(xlabels)),ymin = 0, ymax = maxval,color = "#e8e8e8", zorder = 0, alpha = 0.5, linewidth = 0.3)
 with io.capture_output() as captured:
@@ -423,7 +423,7 @@ fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize 
 ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 
 #st.pyplot(fig, width = 'stretch')
-fig.savefig('lines.png', format="png", dpi=300, transparent=True, bbox_inches = "tight")
+fig.savefig('lines.png', format="png", dpi=600, transparent=True, bbox_inches = "tight")
 st.image('lines.png', width = 'stretch',output_format="PNG")
 
 
