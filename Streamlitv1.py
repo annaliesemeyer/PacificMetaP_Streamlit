@@ -430,9 +430,6 @@ st.pyplot(fig, width = 'stretch')
 ##########################
 
 
-fig = px.line(toplot, x=stn_ID, y="sum", color=optiontax, colormap =cmap)
-st.plotly_chart(fig,use_container_width=True)
-
 
 
 
