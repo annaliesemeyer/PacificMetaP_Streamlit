@@ -463,7 +463,7 @@ with col1:
 
 with col2:
     st.markdown('Target Protein 2')
-    target2 = st.selectbox('Select a protein 2 from dropdown or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 4)
+    target2 = st.selectbox('Select protein 2 from dropdown or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 4)
 
 
 params = {'mathtext.default': 'regular' }          
