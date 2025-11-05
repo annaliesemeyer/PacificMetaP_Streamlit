@@ -423,9 +423,9 @@ fig.legend(loc='outside right center', frameon = True, framealpha = 1, fontsize 
 ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 
 #st.pyplot(fig, width = 'stretch')
-fig.savefig('lines.pdf', format="pdf", bbox_inches = "tight")
-st.pdf('lines.pdf', height = 'stretch')
-#st.image('lines.png', width = 'stretch',output_format="PNG")
+fig.savefig('lines.svg', format="svg", bbox_inches = "tight")
+#st.pdf('lines.pdf', height = 'stretch')
+st.image('lines.svg', width = 'stretch',output_format="PNG")
 
 
 
@@ -520,7 +520,8 @@ ax.spines['right'].set_color("palegreen")
 ax.tick_params(axis='y', colors="palegreen", labelsize = 10)
 ax.tick_params(axis='x', colors="palegreen", labelsize =10)
 
-fig.savefig('comps.pdf', format="pdf", bbox_inches = "tight")
-st.pdf('comps.pdf', height = 'stretch')
+fig.savefig('comps.svg', format="svg", bbox_inches = "tight")
+#st.pdf('comps.pdf', height = 'stretch')
 
+st.image('comps.svg', width = 'stretch',output_format="PNG")
 
