@@ -245,7 +245,7 @@ with col1:
     fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
                          hover_name="stn", size="summed",size_max = 30,color_continuous_scale="GnBu",opacity = 0.9)
     
-    fig.update_layout(height=800, width = 700)
+    fig.update_layout(height=800, width = 500)
     fig.update_layout(coloraxis_colorbar_title_text = '% per station')
     fig.update_layout(
         autosize=False,
@@ -253,7 +253,7 @@ with col1:
         map=dict(
             bearing=0,
             pitch=0,
-            zoom=1,
+            zoom=0,
             bounds=dict(
                 west=-170,
                 south=-70,
@@ -270,7 +270,7 @@ with col1:
     paper_bgcolor='indigo',
     margin=dict(pad=0, r=2, t=2, b=2, l=2)
 )
-    st.plotly_chart(fig,use_container_width=True)
+    st.plotly_chart(fig,use_container_width=False)
 
 with col2:
     st.markdown('The bubbles on this map show the relative amount of '+ str(taxselect) + ' in the '+str(sizefract)+' size fraction at each station along the transect. Hover over each point for the station name and the fractional contribution of that taxon to the proteins at that station.')
@@ -378,7 +378,7 @@ fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
 
 #zoom 4, height 4000, width 1400 for print, size max 40
 
-fig.update_layout(height=800, width = 700)
+fig.update_layout(height=800, width = 500)
 fig.update_layout(coloraxis_colorbar_title_text = '% per station')
 fig.update_layout(
     autosize=False,
@@ -386,7 +386,7 @@ fig.update_layout(
     map=dict(
         bearing=0,
         pitch=0,
-        zoom=1,
+        zoom=0,
         bounds=dict(
         west=-170,
         south=-70,
@@ -406,7 +406,7 @@ fig.update_layout(
 
 col1, col2 = st.columns(2)
 with col1:
-    st.plotly_chart(fig,use_container_width=True)
+    st.plotly_chart(fig,use_container_width=False)
 with col2:
     st.markdown('The bubbles on this map show the relative amount of '+ str(protselect) + ' from any organism in the '+str(sizefract)+' size fraction at each station along the transect. Hover over each point for the station name and the fractional contribution of that protein to the total number of proteins detected at that station.')
 
