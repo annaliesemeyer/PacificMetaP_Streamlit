@@ -245,7 +245,7 @@ with col1:
     fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
                          hover_name="stn", size="summed",size_max = 30,color_continuous_scale="GnBu",opacity = 0.9)
     
-    fig.update_layout(height=800, width = 600)
+    fig.update_layout(height=900, width = 600)
     fig.update_layout(coloraxis_colorbar_title_text = '% per station')
     fig.update_layout(
         autosize=False,
