@@ -245,15 +245,15 @@ with col1:
     fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
                          hover_name="stn", size="summed",size_max = 30,color_continuous_scale="GnBu",opacity = 0.9)
     
-    fig.update_layout(height=1000, width = 700)
+    fig.update_layout(height=800, width = 700)
     fig.update_layout(coloraxis_colorbar_title_text = '% per station')
     fig.update_layout(
-        autosize=True,
+        autosize=False,
         hovermode='closest',
         map=dict(
             bearing=0,
             pitch=0,
-            zoom=0,
+            zoom=1,
             bounds=dict(
                 west=-170,
                 south=-70,
@@ -378,15 +378,15 @@ fig = px.scatter_map(data2, lat = 'lat', lon = 'lon', color = 'summed',
 
 #zoom 4, height 4000, width 1400 for print, size max 40
 
-fig.update_layout(height=1000, width = 700)
+fig.update_layout(height=800, width = 700)
 fig.update_layout(coloraxis_colorbar_title_text = '% per station')
 fig.update_layout(
-    autosize=True,
+    autosize=False,
     hovermode='closest',
     map=dict(
         bearing=0,
         pitch=0,
-        zoom=0,
+        zoom=1,
         bounds=dict(
         west=-170,
         south=-70,
