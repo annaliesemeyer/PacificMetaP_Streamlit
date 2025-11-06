@@ -178,6 +178,7 @@ st.markdown('These data are to be used for educational purposes only.')
 def loadimage():
     st.image('Methods.svg', width = 'stretch',output_format="PNG")
 
+st.markdown('### Collection Methods')
 loadimage()
 
 st.markdown('## Community Composition')
