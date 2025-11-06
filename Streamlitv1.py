@@ -257,7 +257,7 @@ with col1:
             bounds=dict(
                 west=-170,
                 south=-70,
-                east=-49,
+                east=-60,
                 north=63),
             style="carto-darkmatter"
         ))
@@ -390,7 +390,7 @@ fig.update_layout(
         bounds=dict(
         west=-170,
         south=-70,
-        east=-49,
+        east=-60,
         north=63),
         style="carto-darkmatter",
         
