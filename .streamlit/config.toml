@@ -7,7 +7,7 @@ borderColor = "lightSeaGreen"
 font = "sans-serif"
 headingFont = "sans-serif"
 codeFont = "monospace"
-baseFontSize = 18
+baseFontSize = 22
 [theme.sidebar]
 font = "sans-serif"
 headingFont = "sans-serif"
