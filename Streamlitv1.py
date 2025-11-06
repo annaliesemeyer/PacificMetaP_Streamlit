@@ -309,7 +309,9 @@ lraI	| Zn/Mn transport system SBP
 COG0523 Cluster 1	| Putative Zn chaperone
 znuA	| Zn transport system SBP
 znuD	| Zn transport system ATP-binding protein
+'''
 
+markersinfo2 = '''
 #### Vitamin B12
 | Protein Name | Function |
 | :- | :- |
@@ -347,12 +349,18 @@ Acid Phosphatase	| Acid phosphatase
 
 
 ####
+
 st.markdown('## Functional Distribution')
 
 protselect = st.selectbox('Select a protein or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
 
 if st.checkbox('Protein Markers Reference'):
-    st.markdown(markersinfo)
+    
+    col1,col2 = st.columns(2)
+    with col1:
+        st.markdown(markersinfo)
+    with col2: 
+        st.markdown(markersinfo2)
     
 data = taxa_protname_summed#.groupby(taxa_protname_summed['protname'])
 
