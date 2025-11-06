@@ -253,7 +253,7 @@ with col1:
         map=dict(
             bearing=0,
             pitch=0,
-            zoom=1,
+            zoom=0,
             bounds=dict(
                 west=-170,
                 south=-70,
@@ -386,7 +386,7 @@ fig.update_layout(
     map=dict(
         bearing=0,
         pitch=0,
-        zoom=1,
+        zoom=0,
         bounds=dict(
         west=-170,
         south=-70,
