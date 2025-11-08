@@ -302,7 +302,7 @@ Acid Phosphatase	| Acid phosphatase
 st.markdown('## Functional Distribution')
 
 protselect = st.selectbox('Select a protein or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 0)
-st.markdown(_'Protein names are case sensitive.'_)
+st.markdown('_Protein names are case sensitive._')
 
 if st.checkbox('Protein Markers Reference'):
     st.markdown('### Nutrient Stress Protein Markers')
@@ -438,7 +438,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown('Target Protein 1')
     target = st.selectbox('Select protein 1 from dropdown or enter your own:',['fecA', 'cobW','irpA','metE','metH','ureC','urtA','ftsH','btuB'],accept_new_options=True, index = 3)
-    st.markdown(_'Protein names are case sensitive.'_)
+    st.markdown('_Protein names are case sensitive._')
 
 with col2:
     st.markdown('Target Protein 2')
