@@ -414,6 +414,7 @@ ax.ticklabel_format(scilimits=(0,0), axis = 'y')
 fig.savefig('lines.svg', format="svg", bbox_inches = "tight")
 #st.pdf('lines.pdf', height = 'stretch')
 
+st.markdown('   ')
 st.markdown('This plot shows the fractional abundance of '+str(protselect)+' in the ' + str(sizefract)+' size fraction across the transect. Each individual line corresponds to a distinct version of the detected protein from a specific species. The line colours correspond with your selected taxonomic rank, '+str(optiontax)+'.')
 
 st.image('lines.svg', width = 'stretch',output_format="PNG")
