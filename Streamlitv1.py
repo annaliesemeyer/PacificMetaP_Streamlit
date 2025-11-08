@@ -367,6 +367,7 @@ with col1:
     st.plotly_chart(fig,use_container_width=False)
 with col2:
     st.markdown('The bubbles on this map show the relative amount of '+ str(protselect) + ' from any organism in the '+str(sizefract)+' size fraction at each station along the transect. Hover over each point for the station name and the fractional contribution of that protein to the total number of proteins detected at that station.')
+    st.markdown('The predicted functional role of '+str(protselect)+' is '+str(taxa_filled_small['Description'][0]) + '.')
 
 ##########################################
 
@@ -416,7 +417,6 @@ fig.savefig('lines.svg', format="svg", bbox_inches = "tight")
 
 st.markdown('This plot shows the fractional abundance of '+str(protselect)+' in the ' + str(sizefract)+' size fraction across the transect. Each individual line corresponds to a distinct version of the detected protein from a specific species. The line colours correspond with your selected taxonomic rank, '+str(optiontax)+'.')
 
-st.markdown('The functional description of your protein of choice is '+str(taxa_filled_small['Description'][0]) + '.')
 st.image('lines.svg', width = 'stretch',output_format="PNG")
 
 
