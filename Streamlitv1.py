@@ -44,7 +44,7 @@ mpl.rcParams["legend.frameon"] = False
 mpl.rcParams["axes.axisbelow"] = True
 
 @st.cache_resource
-def loadasw():
+def loadaws():
     conn = st.connection('s3', type=FilesConnection)
     taxa_filled_02 = conn.read("pacific-metap/GP15-17-OCE-02-3um_small_streamlit.csv", input_format="csv")
     taxa_filled_3 = conn.read("pacific-metap/GP15-17-OCE-3-51um_small_streamlit.csv", input_format="csv")
@@ -52,11 +52,11 @@ def loadasw():
 #taxa_filled_02 = pd.read_csv('GP15-17-OCE-02-3um.csv',low_memory=False)
 #taxa_filled_3 = pd.read_csv('GP15-17-OCE-3-51um.csv',low_memory=False)
 
-taxa_filled_02, taxa_filled_3 = loadasw()
+taxa_filled_02, taxa_filled_3 = loadaws()
 
 sizefract = st.sidebar.radio('Size Fraction:',['0.2–3 µm', '3–51 µm'],index = 0)
 
-@st.cache_data
+@st.cache_data(ttl=3600)
 def picksize(sizef):
     if sizef =='0.2–3 µm':
         taxa_domain_summed = pd.read_csv('Int_files_Streamlit/domain_02.csv')
@@ -371,7 +371,7 @@ with col2:
 ##########################################
 
 
-taxa_filled_small = taxa_filled[['Protein', 'KEGG_ko','EC','KEGG_TC','COG_category','PFAMs', 'KEGG_Pathway','KEGG_Module','GOs']] 
+taxa_filled_small = taxa_filled[['Protein']] 
 
 taxa_filled_small['protname'] = taxa_filled['Preferred_name']
 taxa_filled_small['Description'] = taxa_filled['Description_y']
