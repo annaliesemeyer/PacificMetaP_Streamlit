@@ -8,7 +8,7 @@ adjustText
 scikit-learn
 plotly
 plotly.express
-umap
+umap-learn
 IPython.utils
 streamlit[pdf]
 s3fs
